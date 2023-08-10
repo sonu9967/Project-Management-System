@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+  <title>PROJECT MANAGEMENT TOOL</title>
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-icon.jpeg">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons8-favicon-100.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="site.webmanifest">
+
+</head>
+
+<body style="background-color: rgb(36, 23, 225);">
+  <header>
+    <h1>PROJECT MANAGEMENT TOOL</h1>
+  </header>
+  <br><br><br>
+  <div class="container-wrapper">
+    <div class="card" style="margin:auto">
+      <div class="form-group">
+        <h4>New User</h4>
+        <input type="text" name="new_project" id="add-project" class="form-control" placeholder="User Name" />
+
+        <button type="button" onclick="taskObj.addProject();" class="btn-primary btn" style="margin-top: 10px; ">
+          Add User
+        </button>
+      </div>
+      <div class="row" style="margin-bottom: 50px">
+        <div class="col-md-12">
+
+          <form method="POST" onsubmit="return taskObj.deleteProject(this);" style="display: contents">
+            <select name="project" class="form-control" style="
+                display: initial;
+                width: 200px;
+                margin-left: 5px;
+                margin-right: 5px;
+              " id="form-task-hour-calculator-all-projects"></select>
+            <input type="submit" class="btn btn-danger" value="Delete User" />
+          </form>
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTaskModal"
+            style="background-color: #4CAF50; border-color: #4CAF50;">
+            Add Task
+          </button>
+
+        </div>
+      </div>
+
+      <table class="table">
+        <tr>
+          <th>Task</th>
+          <th>User Name</th>
+          <th>Task Status</th>
+          <th>Duration</th>
+          <th>Date</th>
+          <th>Change Status</th>
+        </tr>
+
+        <tbody id="all-tasks"></tbody>
+      </table>
+    </div>
+
+    <div class="modal fade" id="addTaskModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Task</h5>
+            <button class="close" type="button" data-dismiss="modal">x</button>
+          </div>
+
+          <div class="modal-body">
+            <form method="POST" onsubmit="return taskObj.addTask(this);" id="form-task-hour-calculator">
+              <div class="form-group">
+                <label>User</label>
+                <select name="project" id="add-task-project" class="form-control" required></select>
+              </div>
+
+              <div class="form-group">
+                <label>Task</label>
+                <input type="text" name="task" class="form-control" placeholder="What are you going to do ?" required />
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+            <button type="submit" form="form-task-hour-calculator" class="btn btn-primary">
+              Add Task
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
